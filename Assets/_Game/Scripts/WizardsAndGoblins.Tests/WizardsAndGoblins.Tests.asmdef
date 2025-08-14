@@ -1,6 +1,6 @@
 {
-    "name": "WizardsAndGoblins",
-    "rootNamespace": "WizardsAndGoblins",
+    "name": "WizardsAndGoblins.Tests",
+    "rootNamespace": "WizardsAndGoblins.Tests",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

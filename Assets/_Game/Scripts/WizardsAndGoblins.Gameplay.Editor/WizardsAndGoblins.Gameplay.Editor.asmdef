@@ -1,6 +1,6 @@
 {
-    "name": "WizardsAndGoblins",
-    "rootNamespace": "WizardsAndGoblins",
+    "name": "WizardsAndGoblins.Gameplay.Editor",
+    "rootNamespace": "WizardsAndGoblins.Gameplay.Editor",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

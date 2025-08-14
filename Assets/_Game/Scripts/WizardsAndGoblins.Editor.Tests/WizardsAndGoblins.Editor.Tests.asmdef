@@ -1,6 +1,6 @@
 {
-    "name": "WizardsAndGoblins",
-    "rootNamespace": "WizardsAndGoblins",
+    "name": "WizardsAndGoblins.Editor.Tests",
+    "rootNamespace": "WizardsAndGoblins.Editor.Tests",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
