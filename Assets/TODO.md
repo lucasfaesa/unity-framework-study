@@ -1,4 +1,3 @@
-* Create a proper Spell Factory (following the rules)
+* Try to understand the whole factory flow and refactor it (too many dependencies?)
 * Change the way the mage cast spells
-* Create the diagram
 * Damage enemy
