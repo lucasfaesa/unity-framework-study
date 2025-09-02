@@ -3320,7 +3320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d6967637895e994e8c90451d2960e0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spellPrefab: {fileID: 2570176533355206998, guid: 321a54f1dc38e7d419e2db3e71e49081, type: 3}
+  _spellDatabase: {fileID: 11400000, guid: 39a74e8a4cdc1a44a8bb34214186f645, type: 2}
 --- !u!4 &1589939119
 Transform:
   m_ObjectHideFlags: 0

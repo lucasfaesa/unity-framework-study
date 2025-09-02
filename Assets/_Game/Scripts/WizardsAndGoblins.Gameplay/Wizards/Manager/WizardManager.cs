@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace WizardsAndGoblins.Gameplay.Wizards.Manager
+namespace WizardsAndGoblins.Gameplay.Wizards
 {
-    public class WizardManager : WizardsAndGoblins.Manager
+    public class WizardManager : Manager
     {
         [SerializeField] private Wizard wizardPrefab;
         

@@ -1,37 +1,60 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace WizardsAndGoblins.Gameplay.Spells.Manager
+namespace WizardsAndGoblins.Gameplay.Spells
 {
-    public class SpellManager : WizardsAndGoblins.Manager, ISpellFactory
+    public class SpellManager : Manager
     {
-        [SerializeField] private GameObject spellPrefab;
+        [SerializeField] private SpellDatabase _spellDatabase;
+
+        private ISpellFactory _spellFactory;
+        private List<Entity> _activeSpells = new();
+
+        public ISpellFactory SpellFactory => _spellFactory;
         
-        private List<Entity> _spells = new List<Entity>();
+        public override void Setup()
+        {
+            base.Setup();
+
+            if (_spellDatabase == null)
+            {
+                Debug.LogError("SpellManager: SpellDatabase not set!");
+                return;
+            }
+            
+            GameObject container = new GameObject("Active Spells");
+            container.transform.SetParent(transform);
+            
+            _spellFactory = new SpellDataFactory(_spellDatabase, container.transform);
+        }
 
         public override void Tick(float deltaTime)
         {
             base.Tick(deltaTime);
 
-            foreach (var spell in _spells)
+            for (int i = _activeSpells.Count - 1; i >= 0; i--)
             {
+                Entity spell = _activeSpells[i];
+
+                if (spell == null)
+                {
+                    _activeSpells.RemoveAt(i);
+                    continue;
+                }
+
                 spell.Tick(deltaTime);
             }
         }
 
-        public ISpell CreateSpell(Vector3 position, Vector3 direction)
+        public ISpell CreateSpell(Vector3 position, Vector3 direction, string spellId)
         {
-            if (!spellPrefab.TryGetComponent(out ISpell spell))
+            ISpell spell = _spellFactory.CreateSpell(spellId, position, direction);
+
+            if (spell is Entity entity)
             {
-                Debug.LogError($"Prefab '{spellPrefab.name}' is not a spell!");
-                return null;
+                _activeSpells.Add(entity);
             }
-            
-            spell = Instantiate(spellPrefab, position, Quaternion.LookRotation(direction)).GetComponent<ISpell>();
-            
-            if(spell is Entity entity)
-                _spells.Add(entity);
-            
+
             return spell;
         }
     }

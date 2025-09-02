@@ -16,7 +16,7 @@ namespace WizardsAndGoblins.Gameplay.Wizards
         
         public void CastSpell()
         {
-            ISpell spell = _spellFactory.CreateSpell(spellCastPoint.position, spellCastPoint.forward);
+            ISpell spell = _spellFactory.CreateSpell("fireball", spellCastPoint.position, spellCastPoint.forward);
             spell.Activate();
         }
 

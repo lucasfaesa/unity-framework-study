@@ -1,6 +1,6 @@
 using UnityEngine;
-using WizardsAndGoblins.Gameplay.Spells.Manager;
-using WizardsAndGoblins.Gameplay.Wizards.Manager;
+using WizardsAndGoblins.Gameplay.Spells;
+using WizardsAndGoblins.Gameplay.Wizards;
 
 namespace WizardsAndGoblins.Gameplay.Systems
 {
@@ -13,7 +13,7 @@ namespace WizardsAndGoblins.Gameplay.Systems
             SpellManager spellManager = GetManager<SpellManager>();
             WizardManager wizardManager = GetManager<WizardManager>();
             
-            wizardManager.Setup(spellManager);
+            wizardManager.Setup(spellManager.SpellFactory);
         }
     }
 }
