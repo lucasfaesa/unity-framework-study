@@ -6,18 +6,19 @@ namespace WizardsAndGoblins.Gameplay.Spells
     public class ProjectileSpell : Entity, ISpell
     {
         [SerializeField] private Rigidbody _rigidbody;
-        private SpellData _spellData;
+        
+        private SpellDataSO _spellDataSo;
         private float _lifetime;
 
-        public void Initialize(SpellData spellData)
+        public void Initialize(SpellDataSO spellDataSo)
         {
-            _spellData = spellData;
-            _lifetime = spellData.Lifetime;
+            _spellDataSo = spellDataSo;
+            _lifetime = spellDataSo.Lifetime;
         }
 
         public void Activate()
         {
-            _rigidbody.linearVelocity = transform.forward * _spellData.Speed;
+            _rigidbody.linearVelocity = transform.forward * _spellDataSo.Speed;
         }
 
         public override void Tick(float deltaTime)

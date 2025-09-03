@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e94d4e17276d52b4d8b06174d33f9af7, type: 3}
-  m_Name: SpellDatabase
+  m_Name: WizardSpellsDatabase
   m_EditorClassIdentifier: 
   spells:
   - {fileID: 11400000, guid: a7dee1b2818728b4f8c495cf586f9b80, type: 2}

@@ -5,7 +5,7 @@ namespace WizardsAndGoblins.Gameplay.Spells
 {
     public class SpellManager : Manager
     {
-        [SerializeField] private SpellDatabase _spellDatabase;
+        [SerializeField] private SpellDatabaseSO spellDatabaseSo;
 
         private ISpellFactory _spellFactory;
         private List<Entity> _activeSpells = new();
@@ -16,7 +16,7 @@ namespace WizardsAndGoblins.Gameplay.Spells
         {
             base.Setup();
 
-            if (_spellDatabase == null)
+            if (spellDatabaseSo == null)
             {
                 Debug.LogError("SpellManager: SpellDatabase not set!");
                 return;
@@ -25,7 +25,7 @@ namespace WizardsAndGoblins.Gameplay.Spells
             GameObject container = new GameObject("Active Spells");
             container.transform.SetParent(transform);
             
-            _spellFactory = new SpellDataFactory(_spellDatabase, container.transform);
+            _spellFactory = new SpellFactory(spellDatabaseSo, container.transform);
         }
 
         public override void Tick(float deltaTime)

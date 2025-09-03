@@ -4,7 +4,7 @@ using UnityEngine;
 namespace WizardsAndGoblins
 {
     [CreateAssetMenu(fileName = "New Spell", menuName = "Scriptable Objects/Spells/Spell Data")]
-    public class SpellData : ScriptableObject
+    public class SpellDataSO : ScriptableObject
     {
         [Header("Basic Info")] 
         [SerializeField] private string spellId;

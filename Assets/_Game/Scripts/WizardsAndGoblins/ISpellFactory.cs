@@ -7,7 +7,7 @@ namespace WizardsAndGoblins
     /// </summary>
     public interface ISpellFactory
     {
-        ISpell CreateSpell(SpellData spellData, Vector3 position, Vector3 direction);
+        ISpell CreateSpell(SpellDataSO spellDataSo, Vector3 position, Vector3 direction);
         ISpell CreateSpell(string spellId, Vector3 position, Vector3 direction);
         
     }

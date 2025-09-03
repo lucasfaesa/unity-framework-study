@@ -1,3 +1,4 @@
-* Try to understand the whole factory flow and refactor it (too many dependencies?)
 * Change the way the mage cast spells
+* Input on Mage
 * Damage enemy
+* Implement object pooling

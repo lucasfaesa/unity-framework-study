@@ -5,11 +5,11 @@ using UnityEngine;
 namespace WizardsAndGoblins
 {
     [CreateAssetMenu(fileName = "SpellDatabase", menuName = "Scriptable Objects/Spells/SpellDatabase")]
-    public class SpellDatabase : ScriptableObject, ISpellDatabase
+    public class SpellDatabaseSO : ScriptableObject
     {
-        [SerializeField] private List<SpellData> spells = new();
+        [SerializeField] private List<SpellDataSO> spells = new();
         
-        private Dictionary<string, SpellData> _spellsLookup = new();
+        private Dictionary<string, SpellDataSO> _spellsLookup = new();
 
         private void OnEnable()
         {
@@ -18,7 +18,7 @@ namespace WizardsAndGoblins
 
         private void BuildLookupTable()
         {
-            _spellsLookup = new Dictionary<string, SpellData>();
+            _spellsLookup = new Dictionary<string, SpellDataSO>();
 
             foreach (var spell in spells)
             {
@@ -27,9 +27,9 @@ namespace WizardsAndGoblins
             }
         }
 
-        public SpellData GetSpellData(string spellId)
+        public SpellDataSO GetSpellData(string spellId)
         {
-            _spellsLookup.TryGetValue(spellId, out SpellData spellData);
+            _spellsLookup.TryGetValue(spellId, out SpellDataSO spellData);
             return spellData;
         }
         

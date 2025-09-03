@@ -7,30 +7,30 @@ namespace WizardsAndGoblins.Gameplay.Spells
     /// <summary>
     /// Simple data-driven spell factory for projectiles
     /// </summary>
-    public class SpellDataFactory : ISpellFactory
+    public class SpellFactory : ISpellFactory
     {
-        private readonly ISpellDatabase _spellDatabase;
+        private readonly SpellDatabaseSO _spellDatabase;
         private readonly Transform _spellContainer;
 
-        public SpellDataFactory(ISpellDatabase spellDatabase, Transform spellContainer = null)
+        public SpellFactory(SpellDatabaseSO spellDatabase, Transform spellContainer = null)
         {
             _spellDatabase = spellDatabase;
             _spellContainer = spellContainer;
         }
 
-        public ISpell CreateSpell(SpellData spellData, Vector3 position, Vector3 direction)
+        public ISpell CreateSpell(SpellDataSO spellDataSo, Vector3 position, Vector3 direction)
         {
-            if (spellData?.SpellPrefab == null)
+            if (spellDataSo?.SpellPrefab == null)
                 throw new Exception("not found");
             
             Quaternion rotation = direction != Vector3.zero ? Quaternion.LookRotation(direction) : Quaternion.identity;
-            GameObject spellObject = Object.Instantiate(spellData.SpellPrefab, position, rotation, _spellContainer);
+            GameObject spellObject = Object.Instantiate(spellDataSo.SpellPrefab, position, rotation, _spellContainer);
             
             ISpell spell = spellObject.GetComponent<ISpell>();
 
             if (spell is ProjectileSpell projectile)
             {
-                projectile.Initialize(spellData);
+                projectile.Initialize(spellDataSo);
             }
 
             return spell;
@@ -38,15 +38,15 @@ namespace WizardsAndGoblins.Gameplay.Spells
 
         public ISpell CreateSpell(string spellId, Vector3 position, Vector3 direction)
         {
-            SpellData spellData = _spellDatabase.GetSpellData(spellId);
+            SpellDataSO spellDataSo = _spellDatabase.GetSpellData(spellId);
 
-            if (spellData == null)
+            if (spellDataSo == null)
             {
                 Debug.LogError($"Spell '{spellId}' not found!");
                 return null;
             }
             
-            return CreateSpell(spellData, position, direction);
+            return CreateSpell(spellDataSo, position, direction);
         }
     }
 }
