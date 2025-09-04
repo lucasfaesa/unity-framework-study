@@ -47,6 +47,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spellCastPoint: {fileID: 5882862934894591202}
+  spellSlots:
+  - inputActionAsset: {fileID: -658915988175783503, guid: 1a835811fa4e48b41bff50deda853429, type: 3}
+    spellDataSo: {fileID: 11400000, guid: a7dee1b2818728b4f8c495cf586f9b80, type: 2}
 --- !u!1 &9008340123631382266
 GameObject:
   m_ObjectHideFlags: 0

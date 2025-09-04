@@ -1,0 +1,34 @@
+{
+    "name": "PlayerInputs",
+    "maps": [
+        {
+            "name": "Gameplay",
+            "id": "d6b45dd6-3f43-40b1-a6da-4a66d8a541f3",
+            "actions": [
+                {
+                    "name": "SpellSlot1",
+                    "type": "Button",
+                    "id": "6366b102-62a4-4d3a-87c9-79d2e8ec04ea",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "4658f720-3709-4628-a955-11bdb5bb0574",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SpellSlot1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

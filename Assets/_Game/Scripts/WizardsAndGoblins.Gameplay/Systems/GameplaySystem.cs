@@ -12,8 +12,9 @@ namespace WizardsAndGoblins.Gameplay.Systems
 
             SpellManager spellManager = GetManager<SpellManager>();
             WizardManager wizardManager = GetManager<WizardManager>();
+            PlayerInputManager playerInputManager = GetManager<PlayerInputManager>();
             
-            wizardManager.Setup(spellManager.SpellFactory);
+            wizardManager.Setup(spellManager.SpellFactory, playerInputManager);
         }
     }
 }
