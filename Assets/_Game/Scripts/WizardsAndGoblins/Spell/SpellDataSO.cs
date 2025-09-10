@@ -13,7 +13,7 @@ namespace WizardsAndGoblins
 
         [Header("Projectile Properties")] 
         [SerializeField] private float speed = 10f;
-        [SerializeField] private float damage = 25f;
+        [SerializeField] private int damage = 25;
         [SerializeField] private float lifetime = 5f;
 
         // Public properties
@@ -21,7 +21,7 @@ namespace WizardsAndGoblins
         public string SpellName => spellName;
         public GameObject SpellPrefab => spellPrefab;
         public float Speed => speed;
-        public float Damage => damage;
+        public int Damage => damage;
         public float Lifetime => lifetime;
 
         

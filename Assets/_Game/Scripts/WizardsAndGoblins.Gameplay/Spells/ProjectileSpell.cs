@@ -38,7 +38,11 @@ namespace WizardsAndGoblins.Gameplay.Spells
 
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log($"Spell hit {other.name}");
+            if(other.TryGetComponent<IDamageable>(out var damageable))
+            {
+                damageable.TakeDamage(_spellDataSo.Damage);
+            }
+            
             Dispose();
         }
     }
