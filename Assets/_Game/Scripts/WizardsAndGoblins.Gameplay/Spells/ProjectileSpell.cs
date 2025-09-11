@@ -3,12 +3,19 @@ using UnityEngine;
 
 namespace WizardsAndGoblins.Gameplay.Spells
 {
-    public class ProjectileSpell : Entity, ISpell
+    public class ProjectileSpell : Entity, ISpell, IPoolableObject
     {
         [SerializeField] private Rigidbody _rigidbody;
         
         private SpellDataSO _spellDataSo;
         private float _lifetime;
+        private float _elapseTime;
+        
+        //PoolableObject stuff
+        public IPoolableFactory PoolFactory { get; set; }
+        public string PoolKey { get; set; }
+        public GameObject GameObject => this.gameObject;
+        
 
         public void Initialize(SpellDataSO spellDataSo)
         {
@@ -25,15 +32,10 @@ namespace WizardsAndGoblins.Gameplay.Spells
         {
             base.Tick(deltaTime);
             
-            _lifetime -= deltaTime;
-            if (_lifetime <= 0)
-                Dispose();       
-        }
-
-        public override void Dispose()
-        {
-            base.Dispose();
-            Destroy(gameObject);       
+            _elapseTime += deltaTime;
+            
+            if (_elapseTime >= _lifetime)
+                PoolFactory.ReturnToPool(this);         
         }
 
         private void OnTriggerEnter(Collider other)
@@ -43,7 +45,25 @@ namespace WizardsAndGoblins.Gameplay.Spells
                 damageable.TakeDamage(_spellDataSo.Damage);
             }
             
-            Dispose();
+            PoolFactory.ReturnToPool(this);    
         }
+
+        public void SetPoolFactory(IPoolableFactory factory)
+        {
+            PoolFactory = factory;
+        }
+
+        public void OnTakenFromPool()
+        {
+            _elapseTime = 0f;
+            _rigidbody.linearVelocity = Vector3.zero;
+            _rigidbody.angularVelocity = Vector3.zero;
+        }
+
+        public void OnReturnedToPool()
+        {
+            
+        }
+
     }
 }

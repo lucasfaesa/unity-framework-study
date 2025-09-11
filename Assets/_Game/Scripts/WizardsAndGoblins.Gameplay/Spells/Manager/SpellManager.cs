@@ -25,7 +25,8 @@ namespace WizardsAndGoblins.Gameplay.Spells
             GameObject container = new GameObject("Active Spells");
             container.transform.SetParent(transform);
             
-            _spellFactory = new SpellFactory(spellDatabaseSo, container.transform);
+            var baseFactory = new SpellFactory(spellDatabaseSo, container.transform);
+            _spellFactory = new PooledSpellFactory(baseFactory, spellDatabaseSo, container.transform);
         }
 
         public override void Tick(float deltaTime)

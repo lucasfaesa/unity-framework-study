@@ -11,7 +11,7 @@ namespace WizardsAndGoblins.Gameplay.Spells
     {
         private readonly SpellDatabaseSO _spellDatabase;
         private readonly Transform _spellContainer;
-
+        
         public SpellFactory(SpellDatabaseSO spellDatabase, Transform spellContainer = null)
         {
             _spellDatabase = spellDatabase;
@@ -27,12 +27,8 @@ namespace WizardsAndGoblins.Gameplay.Spells
             GameObject spellObject = Object.Instantiate(spellDataSo.SpellPrefab, position, rotation, _spellContainer);
             
             ISpell spell = spellObject.GetComponent<ISpell>();
-
-            if (spell is ProjectileSpell projectile)
-            {
-                projectile.Initialize(spellDataSo);
-            }
-
+            spell.Initialize(spellDataSo);
+            
             return spell;
         }
 
@@ -48,5 +44,7 @@ namespace WizardsAndGoblins.Gameplay.Spells
             
             return CreateSpell(spellDataSo, position, direction);
         }
+        
+        
     }
 }
