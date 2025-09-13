@@ -859,6 +859,54 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3dc13c0093177ab468751692c8f39971, type: 3}
+--- !u!1 &461790666
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 461790667}
+  - component: {fileID: 461790668}
+  m_Layer: 0
+  m_Name: UISystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &461790667
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461790666}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -16.35954, y: 0, z: 117.76685}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1279170235}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &461790668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461790666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f78ea938369ace499829f121b3835bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: WizardsAndGoblins.UI::WizardsAndGoblins.UI.UISystem
+  setupTiming: 0
+  managers:
+  - {fileID: 1279170236}
 --- !u!4 &469523462 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3dc13c0093177ab468751692c8f39971, type: 3}
@@ -2714,6 +2762,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3dc13c0093177ab468751692c8f39971, type: 3}
   m_PrefabInstance: {fileID: 1776019491}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1279170234
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1279170235}
+  - component: {fileID: 1279170236}
+  m_Layer: 0
+  m_Name: HealthDisplayManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1279170235
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279170234}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 461790667}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1279170236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279170234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16c70c7e6d7a9ba49af0549a810593cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: WizardsAndGoblins.UI::WizardsAndGoblins.UI.HealthDisplayManager
+  damageableSpawnedChannel: {fileID: 11400000, guid: 94e7ede12e9b2184c89c971c2ffc32b4, type: 2}
+  healthDisplayPrefab: {fileID: 9087814949231852990, guid: cbde327a3e62b59499bb3ad0f73c83f5, type: 3}
 --- !u!4 &1311963846 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8c9184866cb1e6241aab4ec0b523620c, type: 3}
@@ -2833,6 +2927,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: WizardsAndGoblins.Gameplay::WizardsAndGoblins.Gameplay.Skeletons.SkeletonManager
   skeletonPrefab: {fileID: 732453753206881626, guid: e2d6f4f0e0ed8824a94d3e9af39396cb, type: 3}
+  damageableSpawnedChannel: {fileID: 11400000, guid: 94e7ede12e9b2184c89c971c2ffc32b4, type: 2}
 --- !u!1001 &1354495529
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3986,3 +4081,4 @@ SceneRoots:
   - {fileID: 787229381}
   - {fileID: 819629276}
   - {fileID: 911786170}
+  - {fileID: 461790667}

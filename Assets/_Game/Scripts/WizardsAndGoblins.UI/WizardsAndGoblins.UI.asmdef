@@ -1,0 +1,16 @@
+{
+    "name": "WizardsAndGoblins.UI",
+    "rootNamespace": "WizardsAndGoblins.UI",
+    "references": [
+        "GUID:943cfb6d863ee1e4690e493b488bbd76"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

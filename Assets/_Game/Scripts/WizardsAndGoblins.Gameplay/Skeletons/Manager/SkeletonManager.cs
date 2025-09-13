@@ -5,8 +5,8 @@ namespace WizardsAndGoblins.Gameplay.Skeletons
     public class SkeletonManager : Manager
     {
         [SerializeField] private Skeleton skeletonPrefab;
-        private Skeleton _skeleton;
-
+        [SerializeField] private DamageableSpawnedChannelSO damageableSpawnedChannel;
+        
         public override void Setup()
         {
             base.Setup();
@@ -15,8 +15,11 @@ namespace WizardsAndGoblins.Gameplay.Skeletons
         
         private void CreateSkeleton()
         {
-            _skeleton = Instantiate(skeletonPrefab, transform);
-            _skeleton.Setup();
+            var skeleton = Instantiate(skeletonPrefab, transform);
+            skeleton.Setup();
+            
+            var damageable = skeleton.Damageable;
+            damageableSpawnedChannel.Raise(damageable, damageable.HealthDisplayRefTransform);
         }
     }
 }
