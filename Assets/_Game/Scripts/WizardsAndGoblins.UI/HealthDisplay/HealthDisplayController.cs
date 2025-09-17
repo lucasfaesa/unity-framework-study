@@ -25,8 +25,7 @@ namespace WizardsAndGoblins.UI
         
         private void OnDeath()
         {
-            _view.UpdateHealthBar(0f);
-            _view.gameObject.SetActive(false);
+            _view.Dispose();
         }
         
         public void Dispose()

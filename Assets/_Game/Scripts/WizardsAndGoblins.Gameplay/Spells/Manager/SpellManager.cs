@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace WizardsAndGoblins.Gameplay.Spells
 {
-    public class SpellManager : Manager
+    public class SpellManager : Manager, ISpellService
     {
         [SerializeField] private SpellDatabaseSO spellDatabaseSo;
 
@@ -22,11 +22,16 @@ namespace WizardsAndGoblins.Gameplay.Spells
                 return;
             }
             
-            GameObject container = new GameObject("Active Spells");
+            GameObject container = new GameObject("Spells Pool");
             container.transform.SetParent(transform);
             
-            var baseFactory = new SpellFactory(spellDatabaseSo, container.transform);
-            _spellFactory = new PooledSpellFactory(baseFactory, spellDatabaseSo, container.transform);
+            _spellFactory = new SpellFactory(spellDatabaseSo, container.transform);
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+            _spellFactory.Dispose();
         }
 
         public override void Tick(float deltaTime)
@@ -47,9 +52,9 @@ namespace WizardsAndGoblins.Gameplay.Spells
             }
         }
 
-        public ISpell CreateSpell(Vector3 position, Vector3 direction, string spellId)
+        public ISpell CreateSpell(SpellDataSO spellDataSo, Vector3 position, Vector3 direction)
         {
-            ISpell spell = _spellFactory.CreateSpell(spellId, position, direction);
+            ISpell spell = _spellFactory.CreateSpell(spellDataSo, position, direction);
 
             if (spell is Entity entity)
             {

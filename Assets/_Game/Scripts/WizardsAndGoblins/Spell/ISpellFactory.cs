@@ -8,7 +8,6 @@ namespace WizardsAndGoblins
     public interface ISpellFactory
     {
         ISpell CreateSpell(SpellDataSO spellDataSo, Vector3 position, Vector3 direction);
-        ISpell CreateSpell(string spellId, Vector3 position, Vector3 direction);
-        
+        void Dispose();
     }
 }

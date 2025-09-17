@@ -11,16 +11,16 @@ namespace WizardsAndGoblins.Gameplay.Wizards
     [Header("Input Settings")]
     [SerializeField] private List<InputActionToSpellMap> spellSlots; // think of it as UI slots mapping: slot 1 = spell 1, slot 2 = spell 2, etc.
     
-    private ISpellFactory _spellFactory;
+    private ISpellService _spellService;
     private IInputManager _inputManager;
     // Dictionary O(1) lookup: hash(key) → bucket → compare keys in bucket
     // vs List O(n): check each item until found
     private Dictionary<InputAction, SpellDataSO> _inputToSpellLookup;
 
 
-    public void Setup(ISpellFactory spellFactory, IInputManager inputManager)
+    public void Setup(ISpellService spellService, IInputManager inputManager)
     {
-        _spellFactory = spellFactory;
+        _spellService = spellService;
         _inputManager = inputManager;
         CreateInputToSpellLookup();
         HookInputEvents();
@@ -58,7 +58,7 @@ namespace WizardsAndGoblins.Gameplay.Wizards
 
     private void CastSpell(SpellDataSO spellDataSo)
     {
-        ISpell spell = _spellFactory.CreateSpell(spellDataSo, spellCastPoint.position, spellCastPoint.forward);
+        ISpell spell = _spellService.CreateSpell(spellDataSo, spellCastPoint.position, spellCastPoint.forward);
         spell.Activate();
     }
 }

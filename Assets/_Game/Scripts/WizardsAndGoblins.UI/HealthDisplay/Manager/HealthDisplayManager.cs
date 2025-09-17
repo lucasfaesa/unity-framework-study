@@ -9,12 +9,17 @@ namespace WizardsAndGoblins.UI
     {
         [SerializeField] private DamageableSpawnedChannelSO damageableSpawnedChannel;
         [SerializeField] private HealthDisplayView healthDisplayPrefab;
-
-        private readonly List<HealthDisplayView> _healthDisplayViews = new();
-
+        
+        private IHealthDisplayFactory _healthDisplayFactory;
+        
         public override void Setup()
         {
             base.Setup();
+            
+            GameObject container = new GameObject("HealthDisplay Pool");
+            container.transform.SetParent(transform);
+
+            _healthDisplayFactory = new HealthDisplayFactory(healthDisplayPrefab.gameObject, container.transform);
             damageableSpawnedChannel.OnDamageableSpawned += OnSpawned;
         }
 
@@ -22,16 +27,12 @@ namespace WizardsAndGoblins.UI
         {
             base.Dispose();
             damageableSpawnedChannel.OnDamageableSpawned -= OnSpawned;
-            
-            foreach (var healthDisplayView in _healthDisplayViews)
-                healthDisplayView.Dispose();
+            _healthDisplayFactory.Dispose();
         }
 
         private void OnSpawned(IDamageable iDamageable, Transform spawnPosition)
         {
-            var view = Instantiate(healthDisplayPrefab, spawnPosition);
-            view.Setup(iDamageable);
-            _healthDisplayViews.Add(view);
+            _healthDisplayFactory.CreateHealthDisplay(healthDisplayPrefab.gameObject, iDamageable, spawnPosition);
         }
     }
 }

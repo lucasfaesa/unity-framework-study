@@ -1,5 +1,4 @@
-* Health Display
-* refine health display script
+* Pray to jesus and curse at this framework
 * create billboard component (to always look at camera)
 * Die Behavior
 * Enemy Attack

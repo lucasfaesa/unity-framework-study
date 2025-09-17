@@ -6,13 +6,13 @@ namespace WizardsAndGoblins.Gameplay.Wizards
     {
         [SerializeField] private Wizard wizardPrefab;
         
-        private ISpellFactory _spellFactory;
+        private ISpellService _spellService;
         private IInputManager _inputManager;
         private Wizard _wizard;
         
-        public void Setup(ISpellFactory spellFactory, IInputManager inputManager)
+        public void Setup(ISpellService spellService, IInputManager inputManager)
         {
-            _spellFactory = spellFactory;
+            _spellService = spellService;
             _inputManager = inputManager;
   
             CreateWizard();
@@ -27,7 +27,7 @@ namespace WizardsAndGoblins.Gameplay.Wizards
         private void CreateWizard()
         {
             _wizard = Instantiate(wizardPrefab, transform);
-            _wizard.Setup(_spellFactory, _inputManager);
+            _wizard.Setup(_spellService, _inputManager);
         }
     }
 }
